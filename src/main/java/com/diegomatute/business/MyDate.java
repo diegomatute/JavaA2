@@ -5,6 +5,8 @@
  */
 package com.diegomatute.business;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import java.io.FileReader;
 import java.io.PrintStream;
@@ -47,15 +49,15 @@ public class MyDate
      * This method sets the values of each member variable to
      * the corresponding parameter values.
      * 
-     * @param m Month is set to m.
-     * @param d Day os set to d.
-     * @param y Year is set to y.
+     * @param month Month is set to m.
+     * @param day Day os set to d.
+     * @param year Year is set to y.
     */
-    public MyDate(int m, int d, int y)
+    public MyDate(int month, int day, int year)
     {
-        Month = m;
-        Day = d;
-        Year = y;
+        Month = month;
+        Day = day;
+        Year = year;
     };
     
         
@@ -95,33 +97,33 @@ public class MyDate
     /**
      * This method sets Month to m.
      * 
-     * @param m Month is set to m.
+     * @param month Month is set to m.
     */
-    public void SetMonth(int m)
+    public void SetMonth(int month)
     {
-        Month = m;
+        Month = month;
     };
     
             
     /**
      * This method sets Day to d.
      * 
-     * @param d Day is set to Day.
+     * @param day Day is set to Day.
     */
-    public void SetDay(int d)
+    public void SetDay(int day)
     {
-        Day = d;
+        Day = day;
     };
     
             
     /**
      * This method sets Year to y.
      * 
-     * @param y Year is set to y.
+     * @param year Year is set to y.
     */
-    public void SetYear(int y)
+    public void SetYear(int year)
     {
-        Year = y;
+        Year = year;
     };
     
             
@@ -133,7 +135,15 @@ public class MyDate
     */
     public void readJSON(FileReader fr)
     {
-        String jsonString = ("shift.json");
+        Gson gson = new Gson();
+        
+        MyDate mD;
+        
+        mD = gson.fromJson(fr, MyDate.class);
+        
+        Month = mD.Month;
+        Day = mD.Day;
+        Year = mD.Year;
     };
     
             
@@ -145,7 +155,24 @@ public class MyDate
     */
     public void writeJSON(PrintStream ps)
     {
-        String jsonString = "{\"date\":\" \", \"month\": 9, \"day\": 2, \"year\": 2020}";
+        GsonBuilder builder = new GsonBuilder();
+        //Sets prettyPrinting to true
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        
+        //MyDate x;
+        MyDate x = new MyDate();
+        
+        
+        Month = x.Month;
+        Day = x.Day;
+        Year = x.Year;
+        
+        String jsonString = gson.toJson(x);
+        
+        ps.printf("%s\n", jsonString);
+                
+        //String jsonString = "{\"date\":\" \", \"month\": 9, \"day\": 2, \"year\": 2020}";
 
     };
     

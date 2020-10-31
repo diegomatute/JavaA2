@@ -7,6 +7,7 @@ package com.diegomatute.presentation;
 
 //import com.diegomatute.business.MyDate;
 import com.diegomatute.business.Shift;
+import com.diegomatute.business.Worker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.FileNotFoundException;
@@ -35,6 +36,8 @@ public class Main {
     public static void main(String args[]) throws FileNotFoundException
     {
         int choice;
+        
+        Worker w = new Worker();
 
         //Instance of Shift
         Shift s = new Shift();
@@ -44,11 +47,13 @@ public class Main {
 
         //GSON related variables to parse or create JSON.
         GsonBuilder builder = new GsonBuilder();
+        //Sets prettyPrinting to true
         builder.setPrettyPrinting();
         Gson gson = builder.create();
 
         //Read from file
-        FileReader fr = new FileReader("shift.json");
+        //Moved to choice 1
+        //FileReader fr = new FileReader("shift.json");
 
         
         //******************************************************
@@ -76,18 +81,31 @@ public class Main {
             switch(choice)
             {
                 case 1: 
+                    
+                    //Worker example
+                    /*
+                    FileReader fr = new FileReader("worker.json");
+                    w.readJSON(fr);
+                    
+                    System.out.println(w.toString());
+                    */
+                    
+                    
+                    
+                    
                     Scanner in= new Scanner(System.in);
-
                     String filename;
+                    //FileReader fr = new FileReader("shift.json");
+                    
                     
                     //Asks user for input file name.
                     System.out.printf("Enter Shift JSON Input Filename\n");
                     filename = in.nextLine();
-
-                    //Pass in FileReader
-                    s = gson.fromJson(fr, Shift.class);
-
+                    FileReader fr = new FileReader(filename);
+                    
+                    //Pass in FileReader fr
                     s.readJSON(fr);
+                    
                     
                     break;
                 case 2:
@@ -97,27 +115,21 @@ public class Main {
                     //Asks user for output file name.
                     System.out.printf("Enter output file name: \n");
                     outfile = inP.nextLine();
-
-                    String jsonString = gson.toJson(s);
                     
                     //******************************************************
                     //PrintStream enables data to be written to 
                     // a new file. 
                     //******************************************************
                     PrintStream ps = new PrintStream(outfile);
+                    
                     s.writeJSON(ps);
-
-                    ps.println(jsonString);
-
+                    
                     break;
 
                 case 3:
-                    
-                    s.SetDate(9, 2, 2020);
-                    s.SetHoursWorked(5.0);
-                    
+
                     //Outputs Shift information on screen.
-                    System.out.println(s.GetDate() + ", " + s.GetHoursWorked());
+                    System.out.println(s.toString());
                     
 
                     break;

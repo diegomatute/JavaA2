@@ -5,6 +5,9 @@
  */
 package com.diegomatute.business;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.SerializedName;
 import java.io.FileReader;
 import java.io.PrintStream;
 
@@ -18,9 +21,16 @@ import java.io.PrintStream;
  */
 public class Worker 
 {
+    @SerializedName("first")
     private String First;
+    
+    @SerializedName("last")
     private String Last;
+    
+    @SerializedName("id")
     private int Id;
+    
+    @SerializedName("payRate")
     private double PayRate; 
     
     
@@ -140,7 +150,26 @@ public class Worker
     */
     public void readJSON(FileReader fr)
     {
-        String jsonString = ("shift.json");
+        Gson gson = new Gson();
+        
+        Worker x;
+        
+        
+        x = gson.fromJson(fr, Worker.class);
+        
+        //PayRate = x.GetPayRate();
+        
+        First = x.First;
+        Last = x.Last;
+        Id = x.Id;
+        PayRate = x.PayRate;
+        
+        
+        
+        
+        
+        
+        //String jsonString = ("shift.json");
     }
     
     /**
@@ -151,6 +180,21 @@ public class Worker
     */
     public void writeJSON(PrintStream ps)
     {
+        //Gson gson = new Gson();
+        
+        GsonBuilder builder = new GsonBuilder();
+        //Sets prettyPrinting to true
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        
+        Worker x;
+        
+        
+        
+        
+
+        
+        
         String jsonString = "{\"hoursWorked\": 5.0}";
     }
     
