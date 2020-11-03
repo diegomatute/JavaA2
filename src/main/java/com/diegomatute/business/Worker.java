@@ -166,9 +166,6 @@ public class Worker
         
         
         
-        
-        
-        
         //String jsonString = ("shift.json");
     }
     
@@ -187,15 +184,18 @@ public class Worker
         builder.setPrettyPrinting();
         Gson gson = builder.create();
         
-        Worker x;
+        Worker x = new Worker();
+        First = x.First;
+        Last = x.Last;
+        Id = x.Id;
+        PayRate = x.PayRate;
         
+        String jsonString = gson.toJson(x);
         
+        ps.printf("%s\n", jsonString);
+  
         
-        
-
-        
-        
-        String jsonString = "{\"hoursWorked\": 5.0}";
+        //String jsonString = "{\"hoursWorked\": 5.0}";
     }
     
     /**

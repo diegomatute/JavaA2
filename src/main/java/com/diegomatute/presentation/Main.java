@@ -7,6 +7,7 @@ package com.diegomatute.presentation;
 
 //import com.diegomatute.business.MyDate;
 import com.diegomatute.business.Shift;
+import com.diegomatute.business.TimeSheet;
 import com.diegomatute.business.Worker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -35,6 +36,88 @@ public class Main {
      */
     public static void main(String args[]) throws FileNotFoundException
     {
+        
+        int choice; 
+        
+        //Instance of TimeSheet
+        TimeSheet time = new TimeSheet();
+        
+        //Allows for user input
+        Scanner input = new Scanner(System.in);
+        
+        
+        //GSON related variables to parse or create JSON.
+        GsonBuilder builder = new GsonBuilder();
+        //Sets prettyPrinting to true
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        
+        do 
+        {
+            //Menu
+            System.out.println("TimeSheet UI");
+            System.out.println("-------------");
+            System.out.println("1 - Read TimeSheet from file as JSON");
+            System.out.println("2 - Write TimeSheet to file as JSON");
+            System.out.println("3 - Show Shift at index");
+            System.out.println("4 - Show Shift with most hours");
+            System.out.println("5 - Show TimeSheet report on screen");
+            System.out.println("6 - Show TimeSheet toString on screen");
+            System.out.println("7 - Exit");
+            System.out.printf("Enter choice \n");
+
+            choice = input.nextInt();
+            System.out.println("");
+            
+            switch(choice)
+            {
+                case 1:
+                    
+                    break;
+                    
+                case 2:
+                    
+                    break;
+                    
+                case 3:
+                    
+                    break;
+                    
+                case 4:
+                    
+                    break;
+                    
+                case 5:
+                    
+                    break;
+                    
+                case 6:
+                    
+                    break;
+                    
+                default:
+                    //If choice is not 1-6, program ends.
+                    System.out.println("Exit");
+
+                    break;
+            }
+        }
+        while(choice != 7);
+        
+        
+        
+        
+}
+    }
+
+
+/*
+        
+        
+        //Assignment 2 Code
+
+
+        
         int choice;
         
         Worker w = new Worker();
@@ -91,7 +174,11 @@ public class Main {
                     */
                     
                     
-                    
+        
+                    /*
+        
+        
+        
                     
                     Scanner in= new Scanner(System.in);
                     String filename;
@@ -145,7 +232,6 @@ public class Main {
             }
         }
         while(choice != 4);
-}
-    }
-
-
+        
+        
+        */

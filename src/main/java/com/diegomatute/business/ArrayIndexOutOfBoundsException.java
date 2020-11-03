@@ -11,6 +11,12 @@ package com.diegomatute.business;
  */
 public class ArrayIndexOutOfBoundsException extends Exception
 {
+    private int index;
+    private Shift[] Shifts;
     
+    public Shift getAt(int index)
+    {
+        
+    }
     
 }
