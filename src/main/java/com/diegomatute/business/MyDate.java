@@ -171,8 +171,6 @@ public class MyDate
         String jsonString = gson.toJson(x);
         
         ps.printf("%s\n", jsonString);
-                
-        //String jsonString = "{\"date\":\" \", \"month\": 9, \"day\": 2, \"year\": 2020}";
 
     };
     

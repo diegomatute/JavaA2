@@ -40,10 +40,10 @@ public class Worker
     */
     public Worker()
     {
-        First = "NO";
+        First = "NO_FIRST";
         Last = "NO_LAST";
         Id = 0;
-        PayRate = 0.0;
+        PayRate = 0;
     }
     
     /**

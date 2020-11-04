@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import java.io.FileReader;
 import java.io.PrintStream;
+
 /**
  * Contains Shift class code. This class holds Shift member variables
  * and methods.
@@ -20,7 +21,7 @@ import java.io.PrintStream;
  */
 public class Shift
 {
-    //Do i need an @Serialized for this? Or not since its in MyDate class
+    //Attributes that maps class variables to JSON variables
     @SerializedName ("date")
     private MyDate Date;
     
@@ -32,11 +33,10 @@ public class Shift
      * This method sets the values of each member variable to
      * a default value.
     */
-    
     public Shift()
     {
         Date = new MyDate();
-        HoursWorked = 5.0;
+        HoursWorked = 5;
     }
     
    
@@ -47,9 +47,6 @@ public class Shift
      * @param d MyDate calls new on MyDate()
      * @param hw HoursWorked is set to HW
     */
-        
-
-    //Constructor with parameters
     public Shift(MyDate d, double hw)
     {
         Date = d;
@@ -65,13 +62,6 @@ public class Shift
         
     }
     
-    /*
-    public Shift(int Month1, int Day1, int Year1, double HW)
-    {
-        Date = new MyDate(Month1, Day1, Year1);
-        HoursWorked = HW;
-    }
-    */
     
     
     
@@ -90,7 +80,6 @@ public class Shift
      * 
      * @return HoursWorked
     */
-    
     public double GetHoursWorked()
     {
         return HoursWorked;
@@ -103,25 +92,12 @@ public class Shift
      * 
      * @param d sets the date value.
     */
-    
-    
     public void SetDate(MyDate d)
     {
         Date = d;
     }
     
-    /*
-    public void SetDate(int Month1, int Day1, int Year1)
-    {
-        Date.SetMonth(Month1);
-        Date.SetDay(Day1);
-        Date.SetYear(Year1);
-        
-    }
-    */
     
-    
-
     /**
      * This method sets HoursWorked to HW
      * 
@@ -184,7 +160,8 @@ public class Shift
     @Override
     public String toString()
     {
-        String y = Date + ", " + HoursWorked + " Hours" + "\n"; 
+        //String y = Date + ", " + HoursWorked + " hours"; //"\n" 
+        String y = Date.GetMonth() + "" + Date.GetDay() + "" + Date.GetYear() + ", " + HoursWorked + " hours"; //"\n" 
         return y;
     }
     
