@@ -128,7 +128,7 @@ public class Main
                     //Catches exception
                     catch (ArrayIndexOutOfBoundsException ex) 
                     {
-                        System.out.println("Handled in main\n");
+                        System.out.println("Exception: Handled in main\n");
                         //System.out.println(ex);
                         //System.out.printf("ArithmeticException caught!");
                     //Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);

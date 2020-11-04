@@ -160,8 +160,10 @@ public class Shift
     @Override
     public String toString()
     {
-        //String y = Date + ", " + HoursWorked + " hours"; //"\n" 
-        String y = Date.GetMonth() + "" + Date.GetDay() + "" + Date.GetYear() + ", " + HoursWorked + " hours"; //"\n" 
+        String y = Date + ", " + HoursWorked + " hours"; //"\n"
+        //String y = String.format("%.1f", Date) + ", " + String.format("%.1f", HoursWorked) + " hours"; //"\n" 
+        //String.format("%.1f", Worker.GetPayRate())
+        //String y = Date.GetMonth() + "" + Date.GetDay() + "" + Date.GetYear() + ", " + HoursWorked + " hours"; //"\n" 
         return y;
     }
     

@@ -183,6 +183,7 @@ public class MyDate
     @Override 
     public String toString()
     {
+        //String s = String.format("%.1f", Month) + "/" + String.format("%.1f", Day) + "/" + String.format("%.1f", Year); 
         String s = Month + "/" + Day + "/" + Year; 
         return s;
     }

@@ -38,6 +38,12 @@ public class TimeSheet
     {
         Worker = new Worker();
         Shifts = new Shift[10];
+        
+        //Initialize each shift
+        for(int i = 0; i < 10; i++)
+        {
+            Shifts[i] = new Shift();
+        }
     }
     
     /**
@@ -88,7 +94,8 @@ public class TimeSheet
      * given index.
      * 
      * @param index Index number for array.
-     * @throws ArrayIndexOutOfBoundsException Throws exception.
+     * @throws ArrayIndexOutOfBoundsException Throws an 
+     *         exception ArrayIndexOutOfBoundsException.
      * @return The shift at the given index.
      */
     public Shift getAt(int index) throws ArrayIndexOutOfBoundsException
@@ -148,6 +155,15 @@ public class TimeSheet
         double sumHrs = 0;
         double sumPay = 0;
         
+        //*********************************************************
+        // For loop processes one record at a time from the array  
+        // as long as integer i is less than the length of the
+        // shift array. Integer variables are then set by MyDate 
+        // methods. Double "pay" is then calculated by multiplying 
+        // hoursWorked by payRate. Doubles hoursWorked and totalPay 
+        // are continuously added. The data stored is then displayed 
+        // on the given PrintStream in column form.
+        //*********************************************************
         for(int i = 0; i < Shifts.length; i++)
         {
             int month = Shifts[i].GetDate().GetMonth();
@@ -169,7 +185,8 @@ public class TimeSheet
             "------------", "-------- \n");
         
         //Prints final line of report.
-        ps.printf("%8s %34.2f %10.2f", "Total", sumHrs, sumPay);
+        ps.printf("%8s %34.2f %10.2f\n", "Total", sumHrs, sumPay);
+        
         
     }
     
@@ -188,6 +205,7 @@ public class TimeSheet
         builder.setPrettyPrinting();
         Gson gson = builder.create();
         
+        //Uses objects from TimeSheet class
         String jsonString = gson.toJson(this);
         
         /*
@@ -250,9 +268,10 @@ public class TimeSheet
         //Worker member variable
         s += Worker.GetFirst() + " " + Worker.GetLast();
         s += '\n';
+        
+        //Format to nearest whole number rather than decimal
         s += "$" + String.format("%.1f", Worker.GetPayRate()) + " per hour";
         s += '\n';
-        //s += s1 + s2 + s3 + s4;
         
         
         
@@ -263,11 +282,9 @@ public class TimeSheet
             //String x = new String();
             
             //Member variable Shifts
-            //s+= Shifts[i].toString();
             s+= Shifts[i];
             s += '\n';
         }
-        //String x = Shifts + " " + Worker + "\n"; 
 
         
         return s;
